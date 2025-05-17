@@ -1,14 +1,9 @@
-import GenericField from '@/components/GenericField';
+import Main from '@/components/Main';
 
 export default function Home() {
   return (
     <>
-      <GenericField
-        title="Experiencia laboral"
-        description="Lugares donde trabaje"
-      />
-
-      <GenericField title="Habilidades" description="Habilidades que tengo" />
+      <Main />
     </>
   );
 }
