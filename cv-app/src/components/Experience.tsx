@@ -4,36 +4,37 @@
 import { useState } from 'react';
 
 interface ExperienceProps {
-  company: string;
-  position: string;
-  startDate: string;
-  endDate: string;
+  data: {
+    company: string;
+    position: string;
+    startDate: string;
+    endDate: string;
+  };
+  setData: (data: {
+    company: string;
+    position: string;
+    startDate: string;
+    endDate: string;
+  }) => void;
 }
 
-function Experience({
-  company,
-  position,
-  startDate,
-  endDate,
-}: ExperienceProps) {
-  const [localcompany, setLocalCompany] = useState('');
-  const [localposition, setLocalPosition] = useState('');
-  const [localstartDate, setLocalStartDate] = useState('');
-  const [localendDate, setLocalEndDate] = useState('');
+function Experience({ data, setData }: ExperienceProps) {
+  const [localData, setLocalData] = useState(data);
 
-  const handleChangeCompany = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalCompany(event.target.value);
-  };
-  const handleChangePosition = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalPosition(event.target.value);
-  };
-  const handleChangeStartDate = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setLocalStartDate(event.target.value);
-  };
-  const handleChangeEndDate = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalEndDate(event.target.value);
+  const handleInputChange =
+    (field: keyof typeof localData) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setLocalData({ ...localData, [field]: event.target.value });
+    };
+
+  const handleSubmit = () => {
+    setData(localData);
+    setLocalData({
+      company: '',
+      position: '',
+      startDate: '',
+      endDate: '',
+    });
   };
 
   return (
@@ -46,8 +47,8 @@ function Experience({
         <input
           type="text"
           className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={localcompany}
-          onChange={handleChangeCompany}
+          value={localData.company}
+          onChange={handleInputChange('company')}
           placeholder="Enter the company name here"
         />
       </div>
@@ -57,8 +58,8 @@ function Experience({
         <input
           type="text"
           className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={localposition}
-          onChange={handleChangePosition}
+          value={localData.position}
+          onChange={handleInputChange('position')}
           placeholder="Enter your position here"
         />
       </div>
@@ -68,22 +69,20 @@ function Experience({
         <input
           type="text"
           className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={localstartDate}
-          onChange={handleChangeStartDate}
+          value={localData.startDate}
+          onChange={handleInputChange('startDate')}
           placeholder="Enter the start date here"
         />
         <input
           type="text"
           className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={localendDate}
-          onChange={handleChangeEndDate}
+          value={localData.endDate}
+          onChange={handleInputChange('endDate')}
           placeholder="Enter the end date here"
         />
       </div>
       <button
-        onClick={() => {
-          handleChangeCompany;
-        }}
+        onClick={handleSubmit}
         className="w-full mt-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
       >
         Add
