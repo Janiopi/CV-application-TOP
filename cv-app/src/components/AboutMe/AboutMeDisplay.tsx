@@ -6,7 +6,7 @@ interface DisplayProps {
     name: string;
     phone: string;
     email: string;
-    address: string;
+    description: string;
     github: string;
     linkedin: string;
   };
@@ -21,7 +21,8 @@ function AboutMeDisplay({ data }: DisplayProps) {
       <p> Name: {data.name}</p>
       <p> Phone: {data.phone}</p>
       <p> Email: {data.email}</p>
-      <p> Address: {data.address}</p>
+      {/* Ensure the description grows vertically */}
+      <p className="break-words"> Description: {data.description}</p>
       <p> Github: {data.github}</p>
       <p> Linkedin: {data.linkedin}</p>
     </div>

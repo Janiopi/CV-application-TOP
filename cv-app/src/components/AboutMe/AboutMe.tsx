@@ -8,7 +8,7 @@ interface AboutMeProps {
     name: string;
     phone: string;
     email: string;
-    address: string;
+    description: string;
     github: string;
     linkedin: string;
   };
@@ -16,7 +16,7 @@ interface AboutMeProps {
     name: string;
     phone: string;
     email: string;
-    address: string;
+    description: string;
     github: string;
     linkedin: string;
   }) => void;
@@ -41,7 +41,7 @@ function AboutMe({ data, setData }: AboutMeProps) {
       name: '',
       phone: '',
       email: '',
-      address: '',
+      description: '',
       github: '',
       linkedin: '',
     });
@@ -49,7 +49,7 @@ function AboutMe({ data, setData }: AboutMeProps) {
       name: '',
       phone: '',
       email: '',
-      address: '',
+      description: '',
       github: '',
       linkedin: '',
     });
@@ -78,8 +78,8 @@ function AboutMe({ data, setData }: AboutMeProps) {
           <input
             type="text"
             className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={localData.address}
-            onChange={handleInputChange('address')}
+            value={localData.description}
+            onChange={handleInputChange('description')}
             placeholder="Enter your address here"
           />
         </div>
@@ -125,7 +125,7 @@ function AboutMe({ data, setData }: AboutMeProps) {
           localData.name &&
           localData.phone &&
           localData.email &&
-          localData.address &&
+          localData.description &&
           localData.github &&
           localData.linkedin && (
             <button
@@ -140,7 +140,7 @@ function AboutMe({ data, setData }: AboutMeProps) {
           localData.name &&
           localData.phone &&
           localData.email &&
-          localData.address &&
+          localData.description &&
           localData.github &&
           localData.linkedin && (
             <button
@@ -155,7 +155,7 @@ function AboutMe({ data, setData }: AboutMeProps) {
         {localData.name &&
           localData.phone &&
           localData.email &&
-          localData.address &&
+          localData.description &&
           localData.github &&
           localData.linkedin && (
             <button

@@ -130,7 +130,7 @@ function Experience({ data, setData }: ExperienceProps) {
                 onClick={() => handleUpdate(index)}
                 className="w-full mt-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
               >
-                Update Project
+                Update
               </button>
             )}
 
@@ -152,7 +152,7 @@ function Experience({ data, setData }: ExperienceProps) {
                   onClick={() => handleSubmit(index)}
                   className="w-full mt-4 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                 >
-                  Add New Project
+                  Add
                 </button>
               )}
           </div>
